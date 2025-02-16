@@ -29,7 +29,7 @@ const EmployeeSchema = new mongoose.Schema({
         required: true
     },
     salary: {
-        type: Float32Array,
+        type: Number,
         required: true,
         min: 1000
     },
