@@ -7,6 +7,7 @@ const typeDefs = require("./schemas/schema");
 const resolvers = require("./resolvers/index");
 const jwt = require("jsonwebtoken");
 const { graphqlUploadExpress } = require("graphql-upload");
+const path = require("path");
 
 dotenv.config(); 
 connectDB(); 
@@ -16,6 +17,7 @@ app.use(cors());
 app.use(express.json());
 app.use(graphqlUploadExpress());
 
+app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
 // Middleware to authenticate user from JWT token in request headers.
 const authMiddleware = ({ req }) => {
